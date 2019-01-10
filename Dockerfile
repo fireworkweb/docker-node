@@ -8,8 +8,8 @@ RUN apk add --no-cache \
         openssh-client \
         shadow \
         su-exec \
+    # build tools
     && apk --no-cache add \
-        bash \
         g++ \
         libpng-dev \
         make \
