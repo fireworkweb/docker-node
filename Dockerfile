@@ -1,6 +1,6 @@
 FROM node:alpine
 
-WORKDIR /var/www/html
+WORKDIR /app
 
 RUN apk add --no-cache \
         bash \
