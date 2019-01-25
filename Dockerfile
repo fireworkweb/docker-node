@@ -16,7 +16,7 @@ RUN apk add --no-cache \
         zlib-dev \
     &&  rm -fr /var/cache/apk/*
 
-RUN adduser -D -u 1020 developer
+RUN adduser -D -u 1313 developer && usermod -u 1515 node
 
 COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint
