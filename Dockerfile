@@ -5,7 +5,6 @@ WORKDIR /app
 RUN apk add --no-cache \
         bash \
         git \
-        openssh-client \
         shadow \
         su-exec \
     # build tools
@@ -14,9 +13,9 @@ RUN apk add --no-cache \
         libpng-dev \
         make \
         zlib-dev \
-    &&  rm -fr /var/cache/apk/*
+    && rm -fr /var/cache/apk/*
 
-RUN adduser -D -u 1313 developer && usermod -u 1515 node
+RUN adduser -D -u 1337 developer && deluser --remove-home node
 
 COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint
