@@ -13,6 +13,7 @@ RUN apk add --no-cache \
         libpng-dev \
         make \
         zlib-dev \
+        python \
     && rm -fr /var/cache/apk/*
 
 RUN adduser -D -u 1337 developer && deluser --remove-home node
