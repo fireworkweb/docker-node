@@ -21,4 +21,6 @@ RUN adduser -D -u 1337 developer && deluser --remove-home node
 COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint
 
+RUN npm config set scripts-prepend-node-path true
+
 ENTRYPOINT [ "/entrypoint" ]
