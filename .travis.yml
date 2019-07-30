@@ -14,12 +14,12 @@ matrix:
 
 before_script:
   - docker build -t fireworkweb/node:$DOCKER_IMAGE $DOCKER_IMAGE
-  - $DOCKER_IMAGE == 'alpine' && docker build -t fireworkweb/node:qa qa
+  - $DOCKER_IMAGE == "alpine" && docker build -t fireworkweb/node:qa qa
 
 script:
   - docker run -it --rm fireworkweb/node:$DOCKER_IMAGE node -v
   - docker run -it --rm fireworkweb/node:$DOCKER_IMAGE npm -v
   - docker run -it --rm fireworkweb/node:$DOCKER_IMAGE yarn -v
-  - $DOCKER_IMAGE == 'alpine' && docker build -t fireworkweb/node:qa qa node -v
-  - $DOCKER_IMAGE == 'alpine' && docker build -t fireworkweb/node:qa qa npm -v
-  - $DOCKER_IMAGE == 'alpine' && docker build -t fireworkweb/node:qa qa yarn -v
+  - $DOCKER_IMAGE == "alpine" && docker build -t fireworkweb/node:qa qa node -v
+  - $DOCKER_IMAGE == "alpine" && docker build -t fireworkweb/node:qa qa npm -v
+  - $DOCKER_IMAGE == "alpine" && docker build -t fireworkweb/node:qa qa yarn -v
