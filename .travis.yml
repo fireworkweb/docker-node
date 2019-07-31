@@ -8,7 +8,7 @@ before_script:
 
 script:
   - for image in alpine qa 10-alpine 8-alpine; do
-      docker run -it fireworkweb/node:$image node -v
-      docker run -it fireworkweb/node:$image npm -v
-      docker run -it fireworkweb/node:$image yarn -v
+      docker run -it fireworkweb/node:$image node -v;
+      docker run -it fireworkweb/node:$image npm -v;
+      docker run -it fireworkweb/node:$image yarn -v;
     done
