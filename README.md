@@ -1,10 +1,8 @@
 # fireworkweb/docker-node
 
 <p align="center">
-<a href="https://travis-ci.com/fireworkweb/docker-node"><img src="https://travis-ci.com/fireworkweb/docker-node.svg" alt="Build Status"></a>
+<a href="https://travis-ci.com/fireworkweb/docker-node"><img src="https://travis-ci.com/fireworkweb/docker-node.svg" alt="TravisCI Build Status"></a>
 </p>
-
-![TravisCI](https://travis-ci.com/fireworkweb/docker-node.svg?branch=master)
 
 Minimal Node Docker image focused on Laravel applications. Its use is intended for [fwd](https://github.com/fireworkweb/fwd), but can fit in any other Node use-case.
 
