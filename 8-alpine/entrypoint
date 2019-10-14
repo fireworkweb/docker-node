@@ -6,4 +6,4 @@ if [ ! -z "$ASUSER" ] && [ "$ASUSER" != "0" ]; then
     usermod -u $ASUSER developer
 fi
 
-exec su-exec developer $ASUSER "$@"
+exec su-exec developer "$@"
