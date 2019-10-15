@@ -16,11 +16,11 @@ jobs:
     - name: Test docker images
       run: |
         for image in alpine qa 10-alpine 8-alpine; do
-          docker run -it fireworkweb/node:$image node -v;
-          docker run -it fireworkweb/node:$image npm -v;
-          docker run -it fireworkweb/node:$image yarn -v;
+          docker run fireworkweb/node:$image node -v;
+          docker run fireworkweb/node:$image npm -v;
+          docker run fireworkweb/node:$image yarn -v;
 
-          docker run -it fireworkweb/node:$image -e ASUSER=1000 node -v;
-          docker run -it fireworkweb/node:$image -e ASUSER=1000 npm -v;
-          docker run -it fireworkweb/node:$image -e ASUSER=1000 yarn -v;
+          docker run fireworkweb/node:$image -e ASUSER=1000 node -v;
+          docker run fireworkweb/node:$image -e ASUSER=1000 npm -v;
+          docker run fireworkweb/node:$image -e ASUSER=1000 yarn -v;
         done
