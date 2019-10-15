@@ -16,6 +16,8 @@ jobs:
     - name: Test docker images
       run: |
         for image in alpine qa 10-alpine 8-alpine; do
+          echo "Running on image $image";
+
           docker run fireworkweb/node:$image node -v;
           docker run fireworkweb/node:$image npm -v;
           docker run fireworkweb/node:$image yarn -v;
