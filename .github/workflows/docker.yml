@@ -4,7 +4,11 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macOS-latest]
 
     steps:
     - name: Checkout code
@@ -12,3 +16,15 @@ jobs:
 
     - name: Build docker images
       run: ./build.sh
+
+    - name: Test docker images
+      run: |
+        for image in alpine qa 10-alpine 8-alpine; do
+          docker run -it fireworkweb/node:$image node -v;
+          docker run -it fireworkweb/node:$image npm -v;
+          docker run -it fireworkweb/node:$image yarn -v;
+
+          docker run -it fireworkweb/node:$image -e ASUSER=1000 node -v;
+          docker run -it fireworkweb/node:$image -e ASUSER=1000 npm -v;
+          docker run -it fireworkweb/node:$image -e ASUSER=1000 yarn -v;
+        done
