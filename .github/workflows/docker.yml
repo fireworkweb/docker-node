@@ -1,0 +1,28 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@master
+
+    - name: Build docker images
+      run: ./build.sh
+
+    - name: Test docker images
+      run: |
+        for image in alpine qa 10-alpine 8-alpine; do
+          echo "Running on image $image";
+
+          docker run fireworkweb/node:$image node -v;
+          docker run fireworkweb/node:$image npm -v;
+          docker run fireworkweb/node:$image yarn -v;
+
+          docker run -e ASUSER=1000 fireworkweb/node:$image node -v;
+          docker run -e ASUSER=1000 fireworkweb/node:$image npm -v;
+          docker run -e ASUSER=1000 fireworkweb/node:$image yarn -v;
+        done
