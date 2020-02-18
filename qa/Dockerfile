@@ -1,4 +1,4 @@
-FROM fireworkweb/node:latest
+FROM node:alpine
 
 WORKDIR /app
 
