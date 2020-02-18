@@ -15,7 +15,7 @@ jobs:
 
     - name: Build docker images
       run: |
-        docker build --pull -t fireworkweb/php:${{ matrix.version }} ${{ matrix.version }}
+        docker build --pull -t fireworkweb/node:${{ matrix.version }} ${{ matrix.version }}
 
     - name: Test docker images
       run: |
