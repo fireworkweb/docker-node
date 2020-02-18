@@ -22,7 +22,7 @@
         {
             "name": "8-qa",
             "data": {
-                "from": "fireworkweb/node:8",
+                "from": "node:8-alpine",
                 "qa": true,
                 "version": "8-qa"
             },
@@ -58,7 +58,7 @@
         {
             "name": "10-qa",
             "data": {
-                "from": "fireworkweb/node:10",
+                "from": "node:10-alpine",
                 "qa": true,
                 "version": "10-qa"
             },
@@ -94,7 +94,7 @@
         {
             "name": "12-qa",
             "data": {
-                "from": "fireworkweb/node:12",
+                "from": "node:12-alpine",
                 "qa": true,
                 "version": "12-qa"
             },
@@ -130,7 +130,7 @@
         {
             "name": "qa",
             "data": {
-                "from": "fireworkweb/node:latest",
+                "from": "node:alpine",
                 "qa": true,
                 "version": "qa"
             },
