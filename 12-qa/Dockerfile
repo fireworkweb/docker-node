@@ -1,4 +1,4 @@
-FROM fireworkweb/node:latest
+FROM fireworkweb/node:12
 
 WORKDIR /app
 

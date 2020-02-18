@@ -5,24 +5,24 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [latest, qa, 12, 12-qa, 10, 10-qa, 8, 8-qa]
 
     steps:
     - name: Checkout code
       uses: actions/checkout@master
 
     - name: Build docker images
-      run: ./build.sh
+      run: |
+        docker build --pull -t fireworkweb/php:${{ matrix.version }} ${{ matrix.version }}
 
     - name: Test docker images
       run: |
-        for image in alpine qa 12-alpine 10-alpine 8-alpine; do
-          echo "Running on image $image";
+        docker run fireworkweb/node:${{ matrix.version }} node -v;
+        docker run fireworkweb/node:${{ matrix.version }} npm -v;
+        docker run fireworkweb/node:${{ matrix.version }} yarn -v;
 
-          docker run fireworkweb/node:$image node -v;
-          docker run fireworkweb/node:$image npm -v;
-          docker run fireworkweb/node:$image yarn -v;
-
-          docker run -e ASUSER=1000 fireworkweb/node:$image node -v;
-          docker run -e ASUSER=1000 fireworkweb/node:$image npm -v;
-          docker run -e ASUSER=1000 fireworkweb/node:$image yarn -v;
-        done
+        docker run -e ASUSER=1000 fireworkweb/node:$image node -v;
+        docker run -e ASUSER=1000 fireworkweb/node:$image npm -v;
+        docker run -e ASUSER=1000 fireworkweb/node:$image yarn -v;
