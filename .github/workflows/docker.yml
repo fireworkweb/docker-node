@@ -23,6 +23,6 @@ jobs:
         docker run fireworkweb/node:${{ matrix.version }} npm -v;
         docker run fireworkweb/node:${{ matrix.version }} yarn -v;
 
-        docker run -e ASUSER=1000 fireworkweb/node:$image node -v;
-        docker run -e ASUSER=1000 fireworkweb/node:$image npm -v;
-        docker run -e ASUSER=1000 fireworkweb/node:$image yarn -v;
+        docker run -e ASUSER=1000 fireworkweb/node:${{ matrix.version }} node -v;
+        docker run -e ASUSER=1000 fireworkweb/node:${{ matrix.version }} npm -v;
+        docker run -e ASUSER=1000 fireworkweb/node:${{ matrix.version }} yarn -v;
