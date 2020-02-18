@@ -1,0 +1,149 @@
+{
+    "output": ".",
+    "builds": [
+        {
+            "name": "8",
+            "data": {
+                "from": "node:8-alpine",
+                "qa": false,
+                "version": "8"
+            },
+            "files": [
+                {
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile"
+                },
+                {
+                    "name": "entrypoint",
+                    "path": "template/entrypoint"
+                }
+            ]
+        },
+        {
+            "name": "8-qa",
+            "data": {
+                "from": "node:8-alpine",
+                "qa": true,
+                "version": "8-qa"
+            },
+            "files": [
+                {
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile"
+                },
+                {
+                    "name": "entrypoint",
+                    "path": "template/entrypoint"
+                }
+            ]
+        },
+        {
+            "name": "10",
+            "data": {
+                "from": "node:10-alpine",
+                "qa": false,
+                "version": "10"
+            },
+            "files": [
+                {
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile"
+                },
+                {
+                    "name": "entrypoint",
+                    "path": "template/entrypoint"
+                }
+            ]
+        },
+        {
+            "name": "10-qa",
+            "data": {
+                "from": "node:10-alpine",
+                "qa": true,
+                "version": "10-qa"
+            },
+            "files": [
+                {
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile"
+                },
+                {
+                    "name": "entrypoint",
+                    "path": "template/entrypoint"
+                }
+            ]
+        },
+        {
+            "name": "12",
+            "data": {
+                "from": "node:12-alpine",
+                "qa": false,
+                "version": "12"
+            },
+            "files": [
+                {
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile"
+                },
+                {
+                    "name": "entrypoint",
+                    "path": "template/entrypoint"
+                }
+            ]
+        },
+        {
+            "name": "12-qa",
+            "data": {
+                "from": "node:12-alpine",
+                "qa": true,
+                "version": "12-qa"
+            },
+            "files": [
+                {
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile"
+                },
+                {
+                    "name": "entrypoint",
+                    "path": "template/entrypoint"
+                }
+            ]
+        },
+        {
+            "name": "latest",
+            "data": {
+                "from": "node:alpine",
+                "qa": false,
+                "version": "latest"
+            },
+            "files": [
+                {
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile"
+                },
+                {
+                    "name": "entrypoint",
+                    "path": "template/entrypoint"
+                }
+            ]
+        },
+        {
+            "name": "qa",
+            "data": {
+                "from": "node:alpine",
+                "qa": true,
+                "version": "qa"
+            },
+            "files": [
+                {
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile"
+                },
+                {
+                    "name": "entrypoint",
+                    "path": "template/entrypoint"
+                }
+            ]
+        }
+    ]
+}

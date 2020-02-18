@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:12-alpine
 
 WORKDIR /app
 
@@ -21,7 +21,6 @@ RUN adduser -D -u 1337 developer && deluser --remove-home node
 COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint
 
-RUN npm config set scripts-prepend-node-path true \
-    && npm install -g buddy.js jshint jsinspect
+RUN npm config set scripts-prepend-node-path true
 
 ENTRYPOINT [ "/entrypoint" ]

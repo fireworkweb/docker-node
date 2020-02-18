@@ -5,24 +5,33 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [latest, qa, 12, 12-qa, 10, 10-qa, 8, 8-qa]
 
     steps:
     - name: Checkout code
       uses: actions/checkout@master
 
     - name: Build docker images
-      run: ./build.sh
+      run: |
+        docker build --pull -t fireworkweb/node:${{ matrix.version }} ${{ matrix.version }}
 
     - name: Test docker images
       run: |
-        for image in alpine qa 10-alpine 8-alpine; do
-          echo "Running on image $image";
+        docker run fireworkweb/node:${{ matrix.version }} node -v;
+        docker run fireworkweb/node:${{ matrix.version }} npm -v;
+        docker run fireworkweb/node:${{ matrix.version }} yarn -v;
 
-          docker run fireworkweb/node:$image node -v;
-          docker run fireworkweb/node:$image npm -v;
-          docker run fireworkweb/node:$image yarn -v;
+        docker run -e ASUSER=1000 fireworkweb/node:${{ matrix.version }} node -v;
+        docker run -e ASUSER=1000 fireworkweb/node:${{ matrix.version }} npm -v;
+        docker run -e ASUSER=1000 fireworkweb/node:${{ matrix.version }} yarn -v;
 
-          docker run -e ASUSER=1000 fireworkweb/node:$image node -v;
-          docker run -e ASUSER=1000 fireworkweb/node:$image npm -v;
-          docker run -e ASUSER=1000 fireworkweb/node:$image yarn -v;
-        done
+    - name: Push to Hub
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+        docker push fireworkweb/node:${{ matrix.version }}
