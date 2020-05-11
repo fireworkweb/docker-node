@@ -110,6 +110,42 @@
             ]
         },
         {
+            "name": "14",
+            "data": {
+                "from": "node:14-alpine",
+                "qa": false,
+                "version": "14"
+            },
+            "files": [
+                {
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile"
+                },
+                {
+                    "name": "entrypoint",
+                    "path": "template/entrypoint"
+                }
+            ]
+        },
+        {
+            "name": "14-qa",
+            "data": {
+                "from": "node:14-alpine",
+                "qa": true,
+                "version": "14-qa"
+            },
+            "files": [
+                {
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile"
+                },
+                {
+                    "name": "entrypoint",
+                    "path": "template/entrypoint"
+                }
+            ]
+        },
+        {
             "name": "latest",
             "data": {
                 "from": "node:alpine",
