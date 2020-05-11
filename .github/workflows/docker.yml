@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [latest, qa, 12, 12-qa, 10, 10-qa, 8, 8-qa]
+        version: [latest, qa, 14, 14-qa, 12, 12-qa, 10, 10-qa, 8, 8-qa]
 
     steps:
     - name: Checkout code
