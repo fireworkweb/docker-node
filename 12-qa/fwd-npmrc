@@ -1,3 +1,4 @@
 scripts-prepend-node-path=true
-store-dir=/home/fwd/.pnpm-store
+package-import-method=copy
 shamefully-hoist=true
+store-dir=/home/fwd/.pnpm-store
