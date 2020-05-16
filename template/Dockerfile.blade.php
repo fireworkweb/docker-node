@@ -21,11 +21,13 @@ RUN adduser -D -u 1337 developer && deluser --remove-home node
 COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint
 
-@if ($qa)
 RUN npm config set scripts-prepend-node-path true \
-    && npm install -g buddy.js jshint jsinspect
-@else
-RUN npm config set scripts-prepend-node-path true
+@if (version_compare($version, '10', '>=') || in_array($version, ['latest', 'qa']))
+    && npx pnpm add -g pnpm \
 @endif
+@if ($qa)
+    && npm install -g buddy.js jshint jsinspect \
+@endif
+    && echo Built
 
 ENTRYPOINT [ "/entrypoint" ]

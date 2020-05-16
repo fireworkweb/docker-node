@@ -22,6 +22,7 @@ COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint
 
 RUN npm config set scripts-prepend-node-path true \
-    && npm install -g buddy.js jshint jsinspect
+    && npm install -g buddy.js jshint jsinspect \
+    && echo Built
 
 ENTRYPOINT [ "/entrypoint" ]
