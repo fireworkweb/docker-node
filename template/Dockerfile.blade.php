@@ -27,7 +27,7 @@ RUN chmod +x /entrypoint \
     && npx pnpm add -g pnpm \
 @endif
 @if ($qa)
-    && su-exec npm install -g buddy.js jshint jsinspect \
+    && npm install -g buddy.js jshint jsinspect \
 @endif
     && echo Built
 
