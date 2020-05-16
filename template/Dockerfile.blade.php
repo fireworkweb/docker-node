@@ -22,7 +22,7 @@ COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint
 
 RUN npm config set scripts-prepend-node-path true \
-@if (version_compare($version, '10', '>='))
+@if (version_compare($version, '10', '>=') || in_array($version, ['latest', 'qa']))
     && npx pnpm add -g pnpm \
 @endif
 @if ($qa)
