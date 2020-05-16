@@ -23,7 +23,7 @@ COPY --chown=fwd:fwd fwd-npmrc /home/fwd/.npmrc
 COPY entrypoint /entrypoint
 
 RUN chmod +x /entrypoint \
-    && su-exec npm install -g buddy.js jshint jsinspect \
+    && npm install -g buddy.js jshint jsinspect \
     && echo Built
 
 ENTRYPOINT [ "/entrypoint" ]

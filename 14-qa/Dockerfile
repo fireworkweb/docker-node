@@ -24,7 +24,7 @@ COPY entrypoint /entrypoint
 
 RUN chmod +x /entrypoint \
     && npx pnpm add -g pnpm \
-    && su-exec npm install -g buddy.js jshint jsinspect \
+    && npm install -g buddy.js jshint jsinspect \
     && echo Built
 
 ENTRYPOINT [ "/entrypoint" ]
