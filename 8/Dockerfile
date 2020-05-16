@@ -18,10 +18,11 @@ RUN apk add --no-cache \
 
 RUN adduser -D -u 1337 fwd && deluser --remove-home node
 
+COPY root-npmrc /root/.npmrc
+COPY --chown=fwd:fwd fwd-npmrc /home/fwd/.npmrc
 COPY entrypoint /entrypoint
-RUN chmod +x /entrypoint
 
-RUN npm config set scripts-prepend-node-path true \
+RUN chmod +x /entrypoint \
     && echo Built
 
 ENTRYPOINT [ "/entrypoint" ]

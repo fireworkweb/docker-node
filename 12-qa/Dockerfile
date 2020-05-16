@@ -18,14 +18,13 @@ RUN apk add --no-cache \
 
 RUN adduser -D -u 1337 fwd && deluser --remove-home node
 
+COPY root-npmrc /root/.npmrc
+COPY --chown=fwd:fwd fwd-npmrc /home/fwd/.npmrc
 COPY entrypoint /entrypoint
-RUN chmod +x /entrypoint
 
-RUN npm config set scripts-prepend-node-path true \
+RUN chmod +x /entrypoint \
     && npx pnpm add -g pnpm \
-    && pnpm config set store-dir /home/fwd/.pnpm-store \
-    && pnpm config set shamefully-hoist true \
-    && npm install -g buddy.js jshint jsinspect \
+    && su-exec npm install -g buddy.js jshint jsinspect \
     && echo Built
 
 ENTRYPOINT [ "/entrypoint" ]

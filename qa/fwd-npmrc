@@ -1,0 +1,3 @@
+scripts-prepend-node-path=true
+store-dir=/home/fwd/.pnpm-store
+shamefully-hoist=true

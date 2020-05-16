@@ -16,6 +16,14 @@
                 {
                     "name": "entrypoint",
                     "path": "template/entrypoint"
+                },
+                {
+                    "name": "fwd-npmrc",
+                    "path": "template/fwd-npmrc"
+                },
+                {
+                    "name": "root-npmrc",
+                    "path": "template/root-npmrc"
                 }
             ]
         },
@@ -34,6 +42,14 @@
                 {
                     "name": "entrypoint",
                     "path": "template/entrypoint"
+                },
+                {
+                    "name": "fwd-npmrc",
+                    "path": "template/fwd-npmrc"
+                },
+                {
+                    "name": "root-npmrc",
+                    "path": "template/root-npmrc"
                 }
             ]
         },
@@ -52,6 +68,14 @@
                 {
                     "name": "entrypoint",
                     "path": "template/entrypoint"
+                },
+                {
+                    "name": "fwd-npmrc",
+                    "path": "template/fwd-npmrc"
+                },
+                {
+                    "name": "root-npmrc",
+                    "path": "template/root-npmrc"
                 }
             ]
         },
@@ -70,6 +94,14 @@
                 {
                     "name": "entrypoint",
                     "path": "template/entrypoint"
+                },
+                {
+                    "name": "fwd-npmrc",
+                    "path": "template/fwd-npmrc"
+                },
+                {
+                    "name": "root-npmrc",
+                    "path": "template/root-npmrc"
                 }
             ]
         },
@@ -88,6 +120,14 @@
                 {
                     "name": "entrypoint",
                     "path": "template/entrypoint"
+                },
+                {
+                    "name": "fwd-npmrc",
+                    "path": "template/fwd-npmrc"
+                },
+                {
+                    "name": "root-npmrc",
+                    "path": "template/root-npmrc"
                 }
             ]
         },
@@ -106,6 +146,14 @@
                 {
                     "name": "entrypoint",
                     "path": "template/entrypoint"
+                },
+                {
+                    "name": "fwd-npmrc",
+                    "path": "template/fwd-npmrc"
+                },
+                {
+                    "name": "root-npmrc",
+                    "path": "template/root-npmrc"
                 }
             ]
         },
@@ -124,6 +172,14 @@
                 {
                     "name": "entrypoint",
                     "path": "template/entrypoint"
+                },
+                {
+                    "name": "fwd-npmrc",
+                    "path": "template/fwd-npmrc"
+                },
+                {
+                    "name": "root-npmrc",
+                    "path": "template/root-npmrc"
                 }
             ]
         },
@@ -142,6 +198,14 @@
                 {
                     "name": "entrypoint",
                     "path": "template/entrypoint"
+                },
+                {
+                    "name": "fwd-npmrc",
+                    "path": "template/fwd-npmrc"
+                },
+                {
+                    "name": "root-npmrc",
+                    "path": "template/root-npmrc"
                 }
             ]
         },
@@ -160,6 +224,14 @@
                 {
                     "name": "entrypoint",
                     "path": "template/entrypoint"
+                },
+                {
+                    "name": "fwd-npmrc",
+                    "path": "template/fwd-npmrc"
+                },
+                {
+                    "name": "root-npmrc",
+                    "path": "template/root-npmrc"
                 }
             ]
         },
@@ -178,6 +250,14 @@
                 {
                     "name": "entrypoint",
                     "path": "template/entrypoint"
+                },
+                {
+                    "name": "fwd-npmrc",
+                    "path": "template/fwd-npmrc"
+                },
+                {
+                    "name": "root-npmrc",
+                    "path": "template/root-npmrc"
                 }
             ]
         }
