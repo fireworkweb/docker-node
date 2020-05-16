@@ -16,7 +16,7 @@ RUN apk add --no-cache \
         python \
     && rm -fr /var/cache/apk/*
 
-RUN adduser -D -u 1337 developer && deluser --remove-home node
+RUN adduser -D -u 1337 fwd && deluser --remove-home node
 
 COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint
