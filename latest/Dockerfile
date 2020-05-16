@@ -22,6 +22,6 @@ COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint
 
 RUN npm config set scripts-prepend-node-path true \
-    && npx pnpm add -g pnpm
+    && echo Built
 
 ENTRYPOINT [ "/entrypoint" ]
