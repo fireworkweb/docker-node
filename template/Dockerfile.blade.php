@@ -18,11 +18,8 @@ RUN adduser -D -u 1337 fwd && deluser --remove-home node \
         make \
         zlib-dev \
         python \
-@if (version_compare($version, '10', '>=') || in_array($version, ['latest', 'qa']))
+@if (version_compare($version, '10', '>='))
     && npm install -g pnpm \
-@endif
-@if ($qa)
-    && npm install -g buddy.js jshint jsinspect \
 @endif
     && rm -rf rm -rf /root/.npm/*
 

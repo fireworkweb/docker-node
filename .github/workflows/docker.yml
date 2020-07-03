@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [latest, qa, 14, 14-qa, 12, 12-qa, 10, 10-qa, 8, 8-qa]
+        version: [8, 10, 12, 14]
 
     steps:
     - name: Checkout code
@@ -16,16 +16,30 @@ jobs:
     - name: Build docker images
       run: |
         docker build --pull -t fireworkweb/node:${{ matrix.version }} ${{ matrix.version }}
+        docker build --pull -t fireworkweb/node:${{ matrix.version }}-adonis ${{ matrix.version }}-adonis
+        docker build --pull -t fireworkweb/node:${{ matrix.version }}-adonis-qa ${{ matrix.version }}-adonis-qa
+        docker build --pull -t fireworkweb/node:${{ matrix.version }}-qa ${{ matrix.version }}-qa
+
+    - name: Build images nginx
+      if: matrix.version == '14'
+      run: |
+        docker build -t fireworkweb/node:latest ${{ matrix.version }}
+        docker build -t fireworkweb/node:adonis ${{ matrix.version }}-adonis
+        docker build -t fireworkweb/node:adonis-qa ${{ matrix.version }}-adonis-qa
+        docker build -t fireworkweb/node:qa ${{ matrix.version }}-qa
+
 
     - name: Test docker images
       run: |
-        docker run fireworkweb/node:${{ matrix.version }} node -v;
-        docker run fireworkweb/node:${{ matrix.version }} npm -v;
-        docker run fireworkweb/node:${{ matrix.version }} yarn -v;
+        for suffix in '' -adonis -adonis-qa -qa; do
+          docker run fireworkweb/node:${{ matrix.version }}$suffix node -v;
+          docker run fireworkweb/node:${{ matrix.version }}$suffix npm -v;
+          docker run fireworkweb/node:${{ matrix.version }}$suffix yarn -v;
 
-        docker run -e ASUSER=1000 fireworkweb/node:${{ matrix.version }} node -v;
-        docker run -e ASUSER=1000 fireworkweb/node:${{ matrix.version }} npm -v;
-        docker run -e ASUSER=1000 fireworkweb/node:${{ matrix.version }} yarn -v;
+          docker run -e ASUSER=1000 fireworkweb/node:${{ matrix.version }}$suffix node -v;
+          docker run -e ASUSER=1000 fireworkweb/node:${{ matrix.version }}$suffix npm -v;
+          docker run -e ASUSER=1000 fireworkweb/node:${{ matrix.version }}$suffix yarn -v;
+        done
 
     - name: Push to Hub
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
@@ -34,4 +48,21 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
         echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+
         docker push fireworkweb/node:${{ matrix.version }}
+        docker push fireworkweb/node:${{ matrix.version }}-adonis
+        docker push fireworkweb/node:${{ matrix.version }}-adonis-qa
+        docker push fireworkweb/node:${{ matrix.version }}-qa
+
+    - name: Push to Hub latest
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.version == '14'
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+
+        docker push fireworkweb/php:latest
+        docker push fireworkweb/php:adonis
+        docker push fireworkweb/php:adonis-qa
+        docker push fireworkweb/php:qa

@@ -30,26 +30,42 @@
         {
             "name": "8-qa",
             "data": {
-                "from": "node:8-alpine",
+                "from": "fireworkweb/node:8",
                 "qa": true,
                 "version": "8-qa"
             },
             "files": [
                 {
                     "name": "Dockerfile",
-                    "path": "template/Dockerfile"
-                },
+                    "path": "template/Dockerfile-qa"
+                }
+            ]
+        },
+        {
+            "name": "8-adonis",
+            "data": {
+                "from": "fireworkweb/node:8",
+                "qa": false,
+                "version": "8"
+            },
+            "files": [
                 {
-                    "name": "entrypoint",
-                    "path": "template/entrypoint"
-                },
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile-adonis"
+                }
+            ]
+        },
+        {
+            "name": "8-adonis-qa",
+            "data": {
+                "from": "fireworkweb/node:8-adonis",
+                "qa": true,
+                "version": "8"
+            },
+            "files": [
                 {
-                    "name": "fwd-npmrc",
-                    "path": "template/fwd-npmrc"
-                },
-                {
-                    "name": "root-npmrc",
-                    "path": "template/root-npmrc"
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile-qa"
                 }
             ]
         },
@@ -82,26 +98,42 @@
         {
             "name": "10-qa",
             "data": {
-                "from": "node:10-alpine",
+                "from": "fireworkweb/node:10",
                 "qa": true,
                 "version": "10-qa"
             },
             "files": [
                 {
                     "name": "Dockerfile",
-                    "path": "template/Dockerfile"
-                },
+                    "path": "template/Dockerfile-qa"
+                }
+            ]
+        },
+        {
+            "name": "10-adonis",
+            "data": {
+                "from": "fireworkweb/node:10",
+                "qa": false,
+                "version": "10"
+            },
+            "files": [
                 {
-                    "name": "entrypoint",
-                    "path": "template/entrypoint"
-                },
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile-adonis"
+                }
+            ]
+        },
+        {
+            "name": "10-adonis-qa",
+            "data": {
+                "from": "fireworkweb/node:10-adonis",
+                "qa": true,
+                "version": "10"
+            },
+            "files": [
                 {
-                    "name": "fwd-npmrc",
-                    "path": "template/fwd-npmrc"
-                },
-                {
-                    "name": "root-npmrc",
-                    "path": "template/root-npmrc"
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile-qa"
                 }
             ]
         },
@@ -134,26 +166,42 @@
         {
             "name": "12-qa",
             "data": {
-                "from": "node:12-alpine",
+                "from": "fireworkweb/node:12",
                 "qa": true,
                 "version": "12-qa"
             },
             "files": [
                 {
                     "name": "Dockerfile",
-                    "path": "template/Dockerfile"
-                },
+                    "path": "template/Dockerfile-qa"
+                }
+            ]
+        },
+        {
+            "name": "12-adonis",
+            "data": {
+                "from": "fireworkweb/node:12",
+                "qa": false,
+                "version": "12"
+            },
+            "files": [
                 {
-                    "name": "entrypoint",
-                    "path": "template/entrypoint"
-                },
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile-adonis"
+                }
+            ]
+        },
+        {
+            "name": "12-adonis-qa",
+            "data": {
+                "from": "fireworkweb/node:12-adonis",
+                "qa": true,
+                "version": "12"
+            },
+            "files": [
                 {
-                    "name": "fwd-npmrc",
-                    "path": "template/fwd-npmrc"
-                },
-                {
-                    "name": "root-npmrc",
-                    "path": "template/root-npmrc"
+                    "name": "Dockerfile",
+                    "path": "template/Dockerfile-qa"
                 }
             ]
         },
@@ -186,78 +234,42 @@
         {
             "name": "14-qa",
             "data": {
-                "from": "node:14-alpine",
+                "from": "fireworkweb/node:14",
                 "qa": true,
                 "version": "14-qa"
             },
             "files": [
                 {
                     "name": "Dockerfile",
-                    "path": "template/Dockerfile"
-                },
-                {
-                    "name": "entrypoint",
-                    "path": "template/entrypoint"
-                },
-                {
-                    "name": "fwd-npmrc",
-                    "path": "template/fwd-npmrc"
-                },
-                {
-                    "name": "root-npmrc",
-                    "path": "template/root-npmrc"
+                    "path": "template/Dockerfile-qa"
                 }
             ]
         },
         {
-            "name": "latest",
+            "name": "14-adonis",
             "data": {
-                "from": "node:alpine",
+                "from": "fireworkweb/node:14",
                 "qa": false,
-                "version": "latest"
+                "version": "14"
             },
             "files": [
                 {
                     "name": "Dockerfile",
-                    "path": "template/Dockerfile"
-                },
-                {
-                    "name": "entrypoint",
-                    "path": "template/entrypoint"
-                },
-                {
-                    "name": "fwd-npmrc",
-                    "path": "template/fwd-npmrc"
-                },
-                {
-                    "name": "root-npmrc",
-                    "path": "template/root-npmrc"
+                    "path": "template/Dockerfile-adonis"
                 }
             ]
         },
         {
-            "name": "qa",
+            "name": "14-adonis-qa",
             "data": {
-                "from": "node:alpine",
+                "from": "fireworkweb/node:14-adonis",
                 "qa": true,
-                "version": "qa"
+                "version": "14"
             },
             "files": [
                 {
                     "name": "Dockerfile",
-                    "path": "template/Dockerfile"
-                },
-                {
-                    "name": "entrypoint",
-                    "path": "template/entrypoint"
-                },
-                {
-                    "name": "fwd-npmrc",
-                    "path": "template/fwd-npmrc"
-                },
-                {
-                    "name": "root-npmrc",
-                    "path": "template/root-npmrc"
+                    "path": "template/Dockerfile-qa"
                 }
             ]
         }
