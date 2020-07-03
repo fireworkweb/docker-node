@@ -18,9 +18,7 @@ RUN adduser -D -u 1337 fwd && deluser --remove-home node \
         make \
         zlib-dev \
         python \
-@if (version_compare($version, '10', '>='))
     && npm install -g pnpm \
-@endif
     && rm -rf rm -rf /root/.npm/*
 
 COPY root-npmrc /root/.npmrc
