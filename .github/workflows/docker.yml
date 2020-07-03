@@ -13,21 +13,41 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@master
 
-    - name: Build docker images
+    - name: Build docker image base
       run: |
         docker build --pull -t fireworkweb/node:${{ matrix.version }} ${{ matrix.version }}
+
+    - name: Build docker image adonis
+      run: |
         docker build -t fireworkweb/node:${{ matrix.version }}-adonis ${{ matrix.version }}-adonis
+
+    - name: Build docker image adonis-qa
+      run: |
         docker build -t fireworkweb/node:${{ matrix.version }}-adonis-qa ${{ matrix.version }}-adonis-qa
+
+    - name: Build docker image qa
+      run: |
         docker build -t fireworkweb/node:${{ matrix.version }}-qa ${{ matrix.version }}-qa
 
-    - name: Build images latest
+    - name: Tag image latest
       if: matrix.version == '14'
       run: |
         docker tag fireworkweb/node:${{ matrix.version }} fireworkweb/node:latest
-        docker tag fireworkweb/node:${{ matrix.version }}-adonis fireworkweb/node:adonis
-        docker tag fireworkweb/node:${{ matrix.version }}-adonis-qa fireworkweb/node:adonis-qa
-        docker tag fireworkweb/node:${{ matrix.version }}-qa fireworkweb/node:qa
 
+    - name: Tag image adonis
+      if: matrix.version == '14'
+      run: |
+        docker tag fireworkweb/node:${{ matrix.version }}-adonis fireworkweb/node:adonis
+
+    - name: Tag image adonis-qa
+      if: matrix.version == '14'
+      run: |
+        docker tag fireworkweb/node:${{ matrix.version }}-adonis-qa fireworkweb/node:adonis-qa
+
+    - name: Tag image qa
+      if: matrix.version == '14'
+      run: |
+        docker tag fireworkweb/node:${{ matrix.version }}-qa fireworkweb/node:qa
 
     - name: Test docker images
       run: |
