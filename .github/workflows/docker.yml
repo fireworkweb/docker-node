@@ -7,47 +7,27 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [10, 12, 14]
+        version: [12, 14]
 
     steps:
     - name: Checkout code
       uses: actions/checkout@master
 
-    - name: Build docker image base
+    - name: Build docker images
       run: |
         docker build --pull -t fireworkweb/node:${{ matrix.version }} ${{ matrix.version }}
-
-    - name: Build docker image adonis
-      run: |
         docker build -t fireworkweb/node:${{ matrix.version }}-adonis ${{ matrix.version }}-adonis
-
-    - name: Build docker image adonis-qa
-      run: |
         docker build -t fireworkweb/node:${{ matrix.version }}-adonis-qa ${{ matrix.version }}-adonis-qa
-
-    - name: Build docker image qa
-      run: |
         docker build -t fireworkweb/node:${{ matrix.version }}-qa ${{ matrix.version }}-qa
 
-    - name: Tag image latest
+    - name: Build images latest
       if: matrix.version == '14'
       run: |
         docker tag fireworkweb/node:${{ matrix.version }} fireworkweb/node:latest
-
-    - name: Tag image adonis
-      if: matrix.version == '14'
-      run: |
         docker tag fireworkweb/node:${{ matrix.version }}-adonis fireworkweb/node:adonis
-
-    - name: Tag image adonis-qa
-      if: matrix.version == '14'
-      run: |
         docker tag fireworkweb/node:${{ matrix.version }}-adonis-qa fireworkweb/node:adonis-qa
-
-    - name: Tag image qa
-      if: matrix.version == '14'
-      run: |
         docker tag fireworkweb/node:${{ matrix.version }}-qa fireworkweb/node:qa
+
 
     - name: Test docker images
       run: |
