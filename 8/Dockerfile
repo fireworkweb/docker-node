@@ -1,28 +1,29 @@
 FROM node:8-alpine
 
+ENV ASUSER= \
+    UID= \
+    ENTRYPOINT=entrypoint.sh
+
 WORKDIR /app
 
-RUN apk add --no-cache \
+RUN adduser -D -u 1337 fwd && deluser --remove-home node \
+    && apk add --no-cache \
         bash \
         git \
         shadow \
         su-exec \
-    # build tools
-    && apk --no-cache add \
+        # build tools
         g++ \
         libpng-dev \
         make \
         zlib-dev \
         python \
-    && rm -fr /var/cache/apk/*
-
-RUN adduser -D -u 1337 fwd && deluser --remove-home node
+    && rm -rf rm -rf /root/.npm/*
 
 COPY root-npmrc /root/.npmrc
 COPY --chown=fwd:fwd fwd-npmrc /home/fwd/.npmrc
 COPY entrypoint /entrypoint
 
-RUN chmod +x /entrypoint \
-    && echo Built
+RUN chmod +x /entrypoint
 
 ENTRYPOINT [ "/entrypoint" ]
