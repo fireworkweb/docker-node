@@ -17,8 +17,8 @@ jobs:
       run: |
         docker build --pull -t fireworkweb/node:${{ matrix.version }} ${{ matrix.version }}
         docker build --pull -t fireworkweb/node:${{ matrix.version }}-adonis ${{ matrix.version }}-adonis
-        docker build --pull -t fireworkweb/node:${{ matrix.version }}-adonis-qa ${{ matrix.version }}-adonis-qa
-        docker build --pull -t fireworkweb/node:${{ matrix.version }}-qa ${{ matrix.version }}-qa
+        docker build -t fireworkweb/node:${{ matrix.version }}-adonis-qa ${{ matrix.version }}-adonis-qa
+        docker build -t fireworkweb/node:${{ matrix.version }}-qa ${{ matrix.version }}-qa
 
     - name: Build images nginx
       if: matrix.version == '14'
