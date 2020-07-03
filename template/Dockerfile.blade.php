@@ -1,7 +1,7 @@
 FROM {{ $from }}
 
 ENV ASUSER= \
-    UID= \
+    UID=0 \
     ENTRYPOINT=entrypoint.sh
 
 WORKDIR /app
