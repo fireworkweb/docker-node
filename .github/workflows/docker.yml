@@ -13,14 +13,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@master
 
-    - name: Build docker images
+    - name: Build images
       run: |
         docker build --pull -t fireworkweb/node:${{ matrix.version }} ${{ matrix.version }}
         docker build -t fireworkweb/node:${{ matrix.version }}-adonis ${{ matrix.version }}-adonis
         docker build -t fireworkweb/node:${{ matrix.version }}-adonis-qa ${{ matrix.version }}-adonis-qa
         docker build -t fireworkweb/node:${{ matrix.version }}-qa ${{ matrix.version }}-qa
 
-    - name: Build images latest
+    - name: Tag latest images
       if: matrix.version == '14'
       run: |
         docker tag fireworkweb/node:${{ matrix.version }} fireworkweb/node:latest
@@ -28,8 +28,7 @@ jobs:
         docker tag fireworkweb/node:${{ matrix.version }}-adonis-qa fireworkweb/node:adonis-qa
         docker tag fireworkweb/node:${{ matrix.version }}-qa fireworkweb/node:qa
 
-
-    - name: Test docker images
+    - name: Test images
       run: |
         for suffix in '' -adonis -adonis-qa -qa; do
           docker run fireworkweb/node:${{ matrix.version }}$suffix node -v;
