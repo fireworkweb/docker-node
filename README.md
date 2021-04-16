@@ -1,3 +1,15 @@
+### fireworkweb/fwd
+
+# ATTENTION - THIS REPO MOVED TO [kool-dev/docker-node](https://github.com/kool-dev/docker-node)
+
+> `fwd` is dead, long live [`kool` (check it out now!](https://github.com/kool-dev/kool)
+
+This repository is deprecated and archived in favour of Kool maintened Node images: https://github.com/kool-dev/docker-node
+
+Below you will find original `fireworkweb/docker-node` README for the sake of historic value.
+
+---
+
 # fireworkweb/docker-node
 
 <p align="center">
